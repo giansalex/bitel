@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Colegios index{% endblock %}
+
+{% block body %}
+    <h1>Colegios index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Code1</th>
+                <th>Code2</th>
+                <th>Code3</th>
+                <th>Cantidad</th>
+                <th>Cel</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for colegio in colegios %}
+            <tr>
+                <td>{{ colegio.id }}</td>
+                <td>{{ colegio.name }}</td>
+                <td>{{ colegio.code1 }}</td>
+                <td>{{ colegio.code2 }}</td>
+                <td>{{ colegio.code3 }}</td>
+                <td>{{ colegio.cantidad }}</td>
+                <td>{{ colegio.cel }}</td>
+                <td>
+                    <a href="{{ path('colegios_show', {'id': colegio.id}) }}">show</a>
+                    <a href="{{ path('colegios_edit', {'id': colegio.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('colegios_new') }}">Create new</a>
+{% endblock %}

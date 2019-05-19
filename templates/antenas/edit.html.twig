@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Antenas{% endblock %}
+
+{% block body %}
+    <h1>Edit Antenas</h1>
+
+    {{ include('antenas/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('antenas_index') }}">back to list</a>
+
+    {{ include('antenas/_delete_form.html.twig') }}
+{% endblock %}

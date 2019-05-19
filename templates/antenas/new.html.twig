@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Antenas{% endblock %}
+
+{% block body %}
+    <h1>Create new Antenas</h1>
+
+    {{ include('antenas/_form.html.twig') }}
+
+    <a href="{{ path('antenas_index') }}">back to list</a>
+{% endblock %}
