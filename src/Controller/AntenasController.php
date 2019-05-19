@@ -22,7 +22,7 @@ class AntenasController extends AbstractController
      */
     public function index(AntenasRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $repository->getWithSearchQueryBuilder($request->query->get('query', ''));
+        $queryBuilder = $repository->getWithSearchQueryBuilder($request->query->get('q', ''));
         $pagination = $paginator->paginate(
             $queryBuilder, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
