@@ -22,7 +22,7 @@ class ColegiosController extends AbstractController
      */
     public function index(ColegiosRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
-        $queryBuilder = $repository->getWithSearchQueryBuilder('');
+        $queryBuilder = $repository->getWithSearchQueryBuilder($request->query->get('query', ''));
         $pagination = $paginator->paginate(
             $queryBuilder, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,

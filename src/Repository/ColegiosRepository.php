@@ -20,8 +20,8 @@ class ColegiosRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('c');
 
         if (!empty($term)){
-            $qb = $qb->andWhere('c.id = :id')
-                    ->setParameter('id', $term);
+            $qb = $qb->andWhere('c.id LIKE :term OR c.name LIKE :term')
+                    ->setParameter('term', '%'.$term.'%');
         }
 
         return $qb
