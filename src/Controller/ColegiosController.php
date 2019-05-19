@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Colegios;
 use App\Form\ColegiosType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,6 +64,7 @@ class ColegiosController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="colegios_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Colegios $colegio): Response
     {
@@ -85,6 +87,7 @@ class ColegiosController extends AbstractController
 
     /**
      * @Route("/{id}", name="colegios_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Colegios $colegio): Response
     {

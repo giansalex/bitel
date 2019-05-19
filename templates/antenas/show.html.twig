@@ -138,9 +138,14 @@
         </tbody>
     </table>
 
-    <a href="{{ path('antenas_index') }}">back to list</a>
+    <a href="{{ path('antenas_index') }}" class="btn btn-primary">Regresar a la lista</a>
 
-    <a href="{{ path('antenas_edit', {'id': antena.id}) }}">edit</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('antenas_edit', {'id': antena.id}) }}">Editar</a>
+        {{ include('antenas/_delete_form.html.twig') }}
+    {% endif %}
 
-    {{ include('antenas/_delete_form.html.twig') }}
+    <a href="http://www.google.com/maps/place/{{ antena.latitud }},{{ antena.longitud }}"
+       class="btn btn-success"
+       target="_blank">Ver en el mapa</a>
 {% endblock %}

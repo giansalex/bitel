@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Antenas;
 use App\Form\AntenasType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +31,7 @@ class AntenasController extends AbstractController
 
     /**
      * @Route("/new", name="antenas_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -85,6 +87,7 @@ class AntenasController extends AbstractController
 
     /**
      * @Route("/{id}", name="antenas_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Antenas $antena): Response
     {

@@ -3,47 +3,48 @@
 {% block title %}Antenas index{% endblock %}
 
 {% block body %}
-    <h1>Antenas index</h1>
+    <h1>Antenas</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Sos</th>
-                <th>Direccion</th>
-                <th>Propietario</th>
-                <th>TelefonoAtc</th>
-                <th>Observacion</th>
-                <th>Distrito</th>
-                <th>Provincia</th>
-                <th>Latitud</th>
-                <th>Longitud</th>
-                <th>AlturaCasa</th>
-                <th>AlturaColumna</th>
-                <th>Shelter</th>
-                <th>Shelter2</th>
-                <th>Estado</th>
-                <th>Tipo</th>
-                <th>Suministro</th>
-                <th>DwdmAgg</th>
-                <th>SrtNoYes</th>
-                <th>Viba</th>
-                <th>OpticalFiber</th>
-                <th>TypeOfDcSystem</th>
-                <th>QuantityOfBatteries</th>
-                <th>AirCondition</th>
-                <th>DryContact</th>
-                <th>JailProtection</th>
-                <th>Padlock</th>
-                <th>Llave</th>
-                <th>HappyCall</th>
-                <th>OnAir</th>
-                <th>Fecha</th>
-                <th>Maintenance</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Sos</th>
+                    <th>Direccion</th>
+                    <th>Propietario</th>
+                    <th>TelefonoAtc</th>
+                    <th>Observacion</th>
+                    <th>Distrito</th>
+                    <th>Provincia</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>AlturaCasa</th>
+                    <th>AlturaColumna</th>
+                    <th>Shelter</th>
+                    <th>Shelter2</th>
+                    <th>Estado</th>
+                    <th>Tipo</th>
+                    <th>Suministro</th>
+                    <th>DwdmAgg</th>
+                    <th>SrtNoYes</th>
+                    <th>Viba</th>
+                    <th>OpticalFiber</th>
+                    <th>TypeOfDcSystem</th>
+                    <th>QuantityOfBatteries</th>
+                    <th>AirCondition</th>
+                    <th>DryContact</th>
+                    <th>JailProtection</th>
+                    <th>Padlock</th>
+                    <th>Llave</th>
+                    <th>HappyCall</th>
+                    <th>OnAir</th>
+                    <th>Fecha</th>
+                    <th>Maintenance</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
         {% for antena in antenas %}
             <tr>
                 <td>{{ antena.id }}</td>
@@ -79,8 +80,7 @@
                 <td>{{ antena.fecha }}</td>
                 <td>{{ antena.maintenance }}</td>
                 <td>
-                    <a href="{{ path('antenas_show', {'id': antena.id}) }}">show</a>
-                    <a href="{{ path('antenas_edit', {'id': antena.id}) }}">edit</a>
+                    <a href="{{ path('antenas_show', {'id': antena.id}) }}">Ver</a>
                 </td>
             </tr>
         {% else %}
@@ -89,7 +89,9 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('antenas_new') }}">Create new</a>
+        </table>
+    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('antenas_new') }}" class="btn btn-primary">Crear nuevo</a>
+    {% endif %}
 {% endblock %}
