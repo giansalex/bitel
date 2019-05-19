@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Colegios;
 use App\Form\ColegiosType;
+use App\Repository\ColegiosRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,14 +20,21 @@ class ColegiosController extends AbstractController
     /**
      * @Route("/", name="colegios_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(ColegiosRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
-        $colegios = $this->getDoctrine()
-            ->getRepository(Colegios::class)
-            ->findAll();
+        $queryBuilder = $repository->getWithSearchQueryBuilder('');
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+//        $colegios = $this->getDoctrine()
+//            ->getRepository(Colegios::class)
+//            ->findAll();
 
         return $this->render('colegios/index.html.twig', [
-            'colegios' => $colegios,
+            'pagination' => $pagination,
         ]);
     }
 

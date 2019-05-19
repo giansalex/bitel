@@ -20,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for colegio in colegios %}
+            {% for colegio in pagination %}
                 <tr>
                     <td>{{ colegio.id }}</td>
                     <td>{{ colegio.name }}</td>
@@ -40,7 +40,9 @@
             {% endfor %}
             </tbody>
         </table>
+        {{ knp_pagination_render(pagination) }}
     </div>
+    {{ 'label_previous'|trans }}
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('colegios_new') }}" class="btn btn-primary">Crear nuevo</a>
     {% endif %}
