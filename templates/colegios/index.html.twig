@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Colegios index{% endblock %}
+{% block title %}Colegios{% endblock %}
 
 {% block body %}
     <h1>Colegios</h1>
@@ -42,7 +42,6 @@
         </table>
         {{ knp_pagination_render(pagination) }}
     </div>
-    {{ 'label_previous'|trans }}
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('colegios_new') }}" class="btn btn-primary">Crear nuevo</a>
     {% endif %}
