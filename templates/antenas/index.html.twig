@@ -7,8 +7,8 @@
 
     <div class="app-wrapper">
         <form class="form-inline" action="{{ path('antenas_index') }}">
-            <input name="q" class="form-control mr-sm-2" type="text" placeholder="Escribe aqui">
-            <button class="btn btn-success" type="submit">Buscar</button>
+            <input name="q" class="form-control mr-sm-2" type="text">
+            <button class="btn btn-success" type="submit"><i class="fa fa-search"></i> Buscar</button>
         </form>
     </div>
     <div class="table-responsive">
@@ -17,36 +17,37 @@
                 <tr>
                     <th>Id</th>
                     <th>Sos</th>
-                    <th>Direccion</th>
-                    <th>Propietario</th>
-                    <th>TelefonoAtc</th>
-                    <th>Observacion</th>
-                    <th>Distrito</th>
-                    <th>Provincia</th>
-                    <th>Latitud</th>
-                    <th>Longitud</th>
-                    <th>AlturaCasa</th>
-                    <th>AlturaColumna</th>
-                    <th>Shelter</th>
-                    <th>Shelter2</th>
-                    <th>Estado</th>
-                    <th>Tipo</th>
+                    <th>Propietarios</th>
+                    <th>Dirección</th>
+                    <th>Telefono</th>
                     <th>Suministro</th>
-                    <th>DwdmAgg</th>
-                    <th>SrtNoYes</th>
-                    <th>Viba</th>
-                    <th>OpticalFiber</th>
-                    <th>TypeOfDcSystem</th>
-                    <th>QuantityOfBatteries</th>
-                    <th>AirCondition</th>
-                    <th>DryContact</th>
-                    <th>JailProtection</th>
-                    <th>Padlock</th>
-                    <th>Llave</th>
-                    <th>HappyCall</th>
-                    <th>OnAir</th>
-                    <th>Fecha</th>
-                    <th>Maintenance</th>
+                    <th>Ubicación</th>
+{#                    <th>Observacion</th>#}
+{#                    <th>Distrito</th>#}
+{#                    <th>Provincia</th>#}
+{#                    <th>Latitud</th>#}
+{#                    <th>Longitud</th>#}
+{#                    <th>AlturaCasa</th>#}
+{#                    <th>AlturaColumna</th>#}
+{#                    <th>Shelter</th>#}
+{#                    <th>Shelter2</th>#}
+{#                    <th>Estado</th>#}
+{#                    <th>Tipo</th>#}
+{#                    <th>DwdmAgg</th>#}
+{#                    <th>SrtNoYes</th>#}
+{#                    <th>Viba</th>#}
+{#                    <th>OpticalFiber</th>#}
+{#                    <th>TypeOfDcSystem</th>#}
+{#                    <th>QuantityOfBatteries</th>#}
+{#                    <th>AirCondition</th>#}
+{#                    <th>DryContact</th>#}
+{#                    <th>JailProtection</th>#}
+{#                    <th>Padlock</th>#}
+{#                    <th>Llave</th>#}
+{#                    <th>HappyCall</th>#}
+{#                    <th>OnAir</th>#}
+{#                    <th>Fecha</th>#}
+{#                    <th>Maintenance</th>#}
                 </tr>
             </thead>
             <tbody>
@@ -54,40 +55,46 @@
             <tr>
                 <td><a href="{{ path('antenas_show', {'id': antena.id}) }}">{{ antena.id }}</a></td>
                 <td>{{ antena.sos }}</td>
-                <td>{{ antena.direccion }}</td>
                 <td>{{ antena.propietario }}</td>
+                <td>{{ antena.direccion }}</td>
                 <td>{{ antena.telefonoAtc }}</td>
-                <td>{{ antena.observacion }}</td>
-                <td>{{ antena.distrito }}</td>
-                <td>{{ antena.provincia }}</td>
-                <td>{{ antena.latitud }}</td>
-                <td>{{ antena.longitud }}</td>
-                <td>{{ antena.alturaCasa }}</td>
-                <td>{{ antena.alturaColumna }}</td>
-                <td>{{ antena.shelter }}</td>
-                <td>{{ antena.shelter2 }}</td>
-                <td>{{ antena.estado }}</td>
-                <td>{{ antena.tipo }}</td>
                 <td>{{ antena.suministro }}</td>
-                <td>{{ antena.dwdmAgg }}</td>
-                <td>{{ antena.srtNoYes }}</td>
-                <td>{{ antena.viba }}</td>
-                <td>{{ antena.opticalFiber }}</td>
-                <td>{{ antena.typeOfDcSystem }}</td>
-                <td>{{ antena.quantityOfBatteries }}</td>
-                <td>{{ antena.airCondition }}</td>
-                <td>{{ antena.dryContact }}</td>
-                <td>{{ antena.jailProtection }}</td>
-                <td>{{ antena.padlock }}</td>
-                <td>{{ antena.llave }}</td>
-                <td>{{ antena.happyCall }}</td>
-                <td>{{ antena.onAir }}</td>
-                <td>{{ antena.fecha }}</td>
-                <td>{{ antena.maintenance }}</td>
+                <td>
+                    {% if antena.latitud and antena.longitud %}
+                    <a href="http://www.google.com/maps/place/{{ antena.latitud }},{{ antena.longitud }}"
+                       target="_blank"><i class="fa fa-map-marker"></i>&nbsp;Maps</a>
+                    {% endif %}
+                </td>
+{#                <td>{{ antena.observacion }}</td>#}
+{#                <td>{{ antena.distrito }}</td>#}
+{#                <td>{{ antena.provincia }}</td>#}
+{#                <td>{{ antena.latitud }}</td>#}
+{#                <td>{{ antena.longitud }}</td>#}
+{#                <td>{{ antena.alturaCasa }}</td>#}
+{#                <td>{{ antena.alturaColumna }}</td>#}
+{#                <td>{{ antena.shelter }}</td>#}
+{#                <td>{{ antena.shelter2 }}</td>#}
+{#                <td>{{ antena.estado }}</td>#}
+{#                <td>{{ antena.tipo }}</td>#}
+{#                <td>{{ antena.dwdmAgg }}</td>#}
+{#                <td>{{ antena.srtNoYes }}</td>#}
+{#                <td>{{ antena.viba }}</td>#}
+{#                <td>{{ antena.opticalFiber }}</td>#}
+{#                <td>{{ antena.typeOfDcSystem }}</td>#}
+{#                <td>{{ antena.quantityOfBatteries }}</td>#}
+{#                <td>{{ antena.airCondition }}</td>#}
+{#                <td>{{ antena.dryContact }}</td>#}
+{#                <td>{{ antena.jailProtection }}</td>#}
+{#                <td>{{ antena.padlock }}</td>#}
+{#                <td>{{ antena.llave }}</td>#}
+{#                <td>{{ antena.happyCall }}</td>#}
+{#                <td>{{ antena.onAir }}</td>#}
+{#                <td>{{ antena.fecha }}</td>#}
+{#                <td>{{ antena.maintenance }}</td>#}
             </tr>
         {% else %}
             <tr>
-                <td colspan="33">no records found</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
