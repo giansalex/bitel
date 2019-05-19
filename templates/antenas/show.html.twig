@@ -3,8 +3,13 @@
 {% block title %}Antenas{% endblock %}
 
 {% block body %}
-    <h1>Antenas</h1>
+    <h1>Antena {{ antena.id }}</h1>
 
+    <div class="app-wrapper">
+        <a href="http://www.google.com/maps/place/{{ antena.latitud }},{{ antena.longitud }}"
+           class="btn btn-success"
+           target="_blank">Ver en el mapa</a>
+    </div>
     <table class="table">
         <tbody>
             <tr>
@@ -145,7 +150,4 @@
         {{ include('antenas/_delete_form.html.twig') }}
     {% endif %}
 
-    <a href="http://www.google.com/maps/place/{{ antena.latitud }},{{ antena.longitud }}"
-       class="btn btn-success"
-       target="_blank">Ver en el mapa</a>
 {% endblock %}

@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Antenas;
 use App\Form\AntenasType;
+use App\Repository\AntenasRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,14 +20,17 @@ class AntenasController extends AbstractController
     /**
      * @Route("/", name="antenas_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(AntenasRepository $repository, Request $request, PaginatorInterface $paginator): Response
     {
-        $antenas = $this->getDoctrine()
-            ->getRepository(Antenas::class)
-            ->findAll();
+        $queryBuilder = $repository->getWithSearchQueryBuilder($request->query->get('query', ''));
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
 
         return $this->render('antenas/index.html.twig', [
-            'antenas' => $antenas,
+            'pagination' => $pagination,
         ]);
     }
 

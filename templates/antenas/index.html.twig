@@ -5,8 +5,14 @@
 {% block body %}
     <h1>Antenas</h1>
 
+    <div class="app-wrapper">
+        <form class="form-inline" action="{{ path('antenas_index') }}">
+            <input name="query" class="form-control mr-sm-2" type="text" placeholder="Escribe aqui">
+            <button class="btn btn-success" type="submit">Buscar</button>
+        </form>
+    </div>
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -41,13 +47,12 @@
                     <th>OnAir</th>
                     <th>Fecha</th>
                     <th>Maintenance</th>
-                    <th>actions</th>
                 </tr>
             </thead>
             <tbody>
-        {% for antena in antenas %}
+        {% for antena in pagination %}
             <tr>
-                <td>{{ antena.id }}</td>
+                <td><a href="{{ path('antenas_show', {'id': antena.id}) }}">{{ antena.id }}</a></td>
                 <td>{{ antena.sos }}</td>
                 <td>{{ antena.direccion }}</td>
                 <td>{{ antena.propietario }}</td>
@@ -79,9 +84,6 @@
                 <td>{{ antena.onAir }}</td>
                 <td>{{ antena.fecha }}</td>
                 <td>{{ antena.maintenance }}</td>
-                <td>
-                    <a href="{{ path('antenas_show', {'id': antena.id}) }}">Ver</a>
-                </td>
             </tr>
         {% else %}
             <tr>
@@ -90,6 +92,7 @@
         {% endfor %}
         </tbody>
         </table>
+        {{ knp_pagination_render(pagination) }}
     </div>
     {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('antenas_new') }}" class="btn btn-primary">Crear nuevo</a>

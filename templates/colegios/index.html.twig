@@ -22,12 +22,12 @@
                 <th>Code3</th>
                 <th>Cantidad</th>
                 <th>Cel</th>
-                <th>actions</th>
             </tr>
             </thead>
             <tbody>
             {% for colegio in pagination %}
                 <tr>
+                    <td><a href="{{ path('colegios_show', {'id': colegio.id}) }}">{{ colegio.id }}</a></td>
                     <td>{{ colegio.id }}</td>
                     <td>{{ colegio.name }}</td>
                     <td>{{ colegio.code1 }}</td>
@@ -35,9 +35,6 @@
                     <td>{{ colegio.code3 }}</td>
                     <td>{{ colegio.cantidad }}</td>
                     <td>{{ colegio.cel }}</td>
-                    <td>
-                        <a href="{{ path('colegios_show', {'id': colegio.id}) }}">Ver</a>
-                    </td>
                 </tr>
             {% else %}
                 <tr>
