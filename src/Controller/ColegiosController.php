@@ -29,10 +29,6 @@ class ColegiosController extends AbstractController
             10/*limit per page*/
         );
 
-//        $colegios = $this->getDoctrine()
-//            ->getRepository(Colegios::class)
-//            ->findAll();
-
         return $this->render('colegios/index.html.twig', [
             'pagination' => $pagination,
         ]);
