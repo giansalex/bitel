@@ -3,13 +3,5 @@
 {% block title %}Inicio{% endblock %}
 
 {% block body %}
-    <h1>Consultas ✅</h1>
-    <div class="row">
-        <div class="col-md-6">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="{{ path('antenas_index') }}">Antenas</a></li>
-                <li class="list-group-item"><a href="{{ path('colegios_index') }}">Colegios</a></li>
-            </ul>
-        </div>
-    </div>
+    <h1>Bienvenido {{ app.user.username }}✅</h1>
 {% endblock %}
