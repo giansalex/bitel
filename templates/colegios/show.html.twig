@@ -5,8 +5,9 @@
 {% block body %}
     <h1>Colegio {{ colegio.id }}</h1>
 
-    <table class="table">
-        <tbody>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ colegio.id }}</td>
@@ -35,8 +36,9 @@
                 <th>Cel</th>
                 <td>{{ colegio.cel }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 
     <a href="{{ path('colegios_index') }}" class="btn btn-primary">Regresar a la lista</a>
 

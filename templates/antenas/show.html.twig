@@ -10,8 +10,9 @@
            class="btn btn-success"
            target="_blank">Ver en el mapa</a>
     </div>
-    <table class="table">
-        <tbody>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ antena.id }}</td>
@@ -140,8 +141,9 @@
                 <th>Maintenance</th>
                 <td>{{ antena.maintenance }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 
     <a href="{{ path('antenas_index') }}" class="btn btn-primary">Regresar a la lista</a>
 
